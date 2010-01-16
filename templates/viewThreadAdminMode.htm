@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{ forum.title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="{{ forum.description }}" />
+    <meta name="keywords" content="{{ forum.description }}" />
+    <link href="/style/subSilver.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/style/thickbox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/style/jquery.js"></script>
+    <script type="text/javascript" src="/style/thickbox.js"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+ <table width="100%" cellspacing="0" cellpadding="7" border="0" align="center">
+  <tr>
+   <td class="bodyline">
+    <table width="100%" cellspacing="0" cellpadding="8" border="0" align="center">
+     <tbody>
+     <tr>
+      <td>
+       <img vspace="1" border="0" alt="logo" src="/images/logo.png"/>
+      </td>
+      <td width="100%" valign="middle" align="center">
+	<form action="/manageForum" method="post">
+        <span class="maintitle" style="color: red">Admin Mode</span>
+		<br />
+	<span class="gen">
+	<table>
+	 <tr>
+	  <td>Title: </td><td><input type="text" size="50" maxlength="100" name="title" value="{{ forum.title }}"></td>
+         </tr>
+	 <tr>
+	  <td>Description: </td><td><input type="text" size="50" maxlength="100" name="description" value="{{ forum.description }}"></td>
+         </tr>
+	 <tr>
+	  <td colspan="2" style="text-align: center;"><input type="submit" value="Save Changes"></td>
+	 </tr>
+	</table>
+	</span>
+	</form>
+      </td>
+      <td nowrap="nowrap" align="center">
+       <span class="gensmall">
+	<img src="/avatar" alt="no avatar" /><br />
+        <b>{{ user}}</b> | <a href="{{ url }}">Sign out</a><br />
+	<a href="/" style="color: red;">Back to User Mode</a>
+       </span>
+      </td>
+     </tr>
+     </tbody>
+    </table>
+
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+     <tr>
+      <td class="nav" valign="bottom" align="left">
+       <span class="nav" style="color: rgb(255, 102, 0);">
+        <a class="nav" href="/?mode=admin">{{ forum.title }}</a>
+       </span>
+      </td>
+      <td valign="middle" nowrap="nowrap" align="right">
+      </td>
+     </tr>
+    </tbody>
+    </table>
+    
+    <div id="imp_topics_277" style="position: relative; font-size: 1.4em;">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="4" border="0">
+    <tbody>
+     <tr>
+      <th class="thCornerL" nowrap="nowrap" height="25" align="center" style="cursor: pointer;" colspan="2"> Topics </th>
+      <th class="thTop" width="50" nowrap="nowrap" align="center"> Posts </th>
+      <th class="thTop" width="100" nowrap="nowrap" align="center"> Author </th>
+      <th class="thCornerR" width="150" nowrap="nowrap" align="center"> Last Post </th>
+     </tr>
+     {% for topic in topics %}
+     <tr>
+      <td class="row1" width="20" valign="middle" align="center">
+       <a href="/delTopic?id={{ topic.key.id }}" onclick="return confirm('Are you sure you want to delete topic: {{ topic.name }}?')"><img alt="delete" title="delete" src="/images/icon_delete.gif" border="0" /></a>
+      </td>
+      <td class="row1" width="100%" style="">
+       <span class="topictitle">
+        <a class="topictitle" href="view?id={{ topic.key.id }}">{{ topic.name }}</a>
+       </span>
+      </td>
+       <td class="row2" valign="middle" align="center" style="">
+        <span class="postdetails">{{ topic.posts_count }}</span>
+       </td>
+       <td class="row1" valign="middle" align="center" style="">
+        <span class="name">
+         <a class="genmed" style="color: rgb(255, 163, 79);"> {{ topic.author }} </a>
+        </span>
+       </td>
+       <td class="row1" valign="middle" nowrap="nowrap" align="center" style="">
+        <span class="postdetails">
+         {% if topic.getLastPost  %}
+         {{ topic.getLastPost.date|date:"d.m.Y H:i"  }}
+         <br/>
+         {{ topic.getLastPost.author }}
+         {% endif %}
+        </span>
+       </td>
+     </tr>
+     {% endfor %}
+     </tbody>
+     </table>
+    <table width="100%" cellspacing="2" cellpadding="2" border="0" align="center" style="background: #ffffff;">
+    <tbody>
+     <tr>
+      <td width="90" valign="bottom" align="left">
+       <!--<a href="addTopic"><img width="82" height="25" border="0" alt="Add new topic" src="/images/post.gif"/></a>-->
+       <a href="addTopic?id={{ thread.key.id }}&height=120&width=700" class="thickbox" title="Add new topic">
+        <img width="82" height="25" border="0" alt="Add new topic" src="/images/post.gif"/>
+       </a> 
+      </td>
+      <td valign="bottom" align="left">
+      </td>
+      <td valign="bottom" nowrap="nowrap" align="right">
+      </td>
+     </tr>
+    </tbody>
+    </table>
+     <br/>
+     </div>
+     <div align="center" style="background: #ffffff;">
+     <span class="copyright"><br/>Small Forum on GAE. Template based on <a class="copyright" target="_blank" href="http://www.phpbb.com">phpBB</a>
+      (subSilver style by <a class="copyright" target="_blank" href="http://www.subblue.com/">Tom Beddard</a>). Coded and template modified by <a class="copyright" target="_blank" href="mailto:log1[ at ]poczta.fm ">log1</a>
+     </span>
+   </div>
+   </td> 
+  </tr>
+ </table>
+ </body>
+</html>

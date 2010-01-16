@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/style/subSilver.css" type="text/css" />
+  </head>
+  <body>
+    <form action="/modifyThread" method="post">
+      <div style="text-align: center; padding: 2em;">
+      Thread Name: <input type="text" size="50" name="name" value="{{ thread.name }}" />
+      <input type="hidden" name="id" value="{{ thread.key.id }}"/>
+      <input type="submit" value="Modify Name">
+      </div>
+    </form>
+  </body>
+</html>

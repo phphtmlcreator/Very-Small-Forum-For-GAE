@@ -1,0 +1,19 @@
+application: small-forum
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /images
+  static_dir: images
+
+- url: /style
+  static_dir: style
+
+#- url: /admin.*
+#  script: ../google/appengine/ext/admin/__init__.py  
+  
+- url: .*
+  script: main.py
+  
+ 

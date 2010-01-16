@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="a7440cd5-b90c-4984-8b8e-e91f0a81d3cb" kpf_version="4" name="forum.kpf">
+<preference-set idref="a7440cd5-b90c-4984-8b8e-e91f0a81d3cb">
+  <boolean id="import_live">1</boolean>
+  <string id="mappedPaths"></string>
+  <string id="pythonExtraPaths">H:\Python\google_appengine_1.2.3\google_appengine\google\appengine\datastore;H:\Python\google_appengine_1.2.3\google_appengine\google\appengine\api\memcache;H:\Python\google_appengine_1.2.3\google_appengine\google\appengine\base;H:\Python\google_appengine_1.2.3\google_appengine\google\appengine\ext\admin</string>
+  <string id="rubyExtraPaths"></string>
+</preference-set>
+</project>

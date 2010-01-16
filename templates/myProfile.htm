@@ -1,0 +1,92 @@
+{% extends 'base.htm' %}
+{% block title %}{{ forum.title }}{% endblock %}
+{% block description %}{{ forum.description }}{% endblock %}
+{% block keywords %}{{ forum.description }}{% endblock %}
+
+{% block path %}
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+     <tr>
+      <td class="nav" valign="bottom" align="left">
+       <span class="nav" style="color: rgb(255, 102, 0);">
+        <a class="nav" href="/">{{ forum.title }}</a>
+        &raquo; 
+        <a class="nav" href="">my profile</a>
+       </span>
+      </td>
+      <td valign="middle" nowrap="nowrap" align="right">
+      </td>
+     </tr>
+    </tbody>
+    </table>
+{% endblock %}
+
+{% block main %}
+    <form action="/myProfile" enctype="multipart/form-data" method="post">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody>
+     <tr>
+     <td align="left">
+     <span class="nav">
+      <a class="nav" href="/">{{ title }}</a>
+     </span>
+     </td>
+    </tr>
+    </tbody>
+    </table>
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" border="0">
+     <tbody>
+     <tr>
+     <th class="thHead" valign="middle" height="25" colspan="2">{{ user }} profile</th>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Name:</span>
+      </td>
+      <td class="row2">
+       <input class="post" type="text" value="{{ name }}" maxlength="255" size="25" name="name" style="width: 200px;" />
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Last Name:</span>
+      </td>
+      <td class="row2">
+       <input class="post" type="text" value="{{ lastName }}" maxlength="255" size="25" name="lastName" style="width: 200px;" />
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">From:</span>
+      </td>
+      <td class="row2">
+       <input class="post" type="text" value="{{ from }}" maxlength="255" size="25" name="from" style="width: 200px;" />
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Web Page: </span>
+      </td>
+      <td class="row2">
+       <input class="post" type="text" value="{{ webpage }}" maxlength="255" size="25" name="webpage" style="width: 200px;" />
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+      <span class="gen">Change Avatar:</span>
+      </td>
+      <td class="row2">
+       <input class="post" type="file" value="" name="avatar" style="width: 200px;" />
+      </td>
+     </tr>
+     <tr>
+      <td class="catBottom" height="22" align="center" colspan="2">
+       <input class="mainoption" type="submit" value="save my profile" name="submit"/>
+       <input class="liteoption" type="reset" name="reset" value="Reset"/>
+      </td>
+     </tr>
+     </tbody>
+    
+    </table>
+    </form>
+{% endblock %}

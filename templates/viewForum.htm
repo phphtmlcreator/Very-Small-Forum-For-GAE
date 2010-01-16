@@ -1,0 +1,47 @@
+{% extends 'base.htm' %}
+{% block title %}{{ forum.title }}{% endblock %}
+{% block description %}{{ forum.description }}{% endblock %}
+{% block keywords %}{{ forum.description }}{% endblock %}
+
+{% block path %}
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+     <tr>
+      <td class="nav" valign="bottom" align="left">
+       <span class="nav" style="color: rgb(255, 102, 0);">
+        <a class="nav" href="/">{{ forum.title }}</a>
+       </span>
+      </td>
+      <td valign="middle" nowrap="nowrap" align="right">
+      </td>
+     </tr>
+    </tbody>
+    </table>
+{% endblock %}
+
+{% block main %}
+    <div id="imp_topics_277" style="position: relative; font-size: 1.4em;">
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="4" border="0">
+    <tbody>
+     <tr>
+      <th class="thCornerL" nowrap="nowrap" height="25" align="center" style="cursor: pointer;" colspan="2"> Threads </th>
+      <th class="thCornerR" width="150" nowrap="nowrap" align="center"> Topics </th>
+     </tr>
+     {% for thread in threads %}
+     <tr>
+      <td class="row1" width="20" valign="middle" align="center">
+       <img width="19" height="18" alt="" src="/images/folder.gif"/>
+      </td>
+      <td class="row1" width="100%" style="">
+       <span class="topictitle">
+        <a class="topictitle" href="viewThread?id={{ thread.key.id }}">{{ thread.name }}</a>
+       </span>
+
+       <td class="row1" valign="middle" nowrap="nowrap" align="center" style="">
+        {{ thread.topics_count }}
+       </td>
+     </tr>
+     {% endfor %}
+     </tbody>
+     </table>
+{% endblock %}

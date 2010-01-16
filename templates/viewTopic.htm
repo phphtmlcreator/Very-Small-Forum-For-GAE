@@ -1,0 +1,145 @@
+{% extends 'base.htm' %}
+{% block title %}{{ forum.title }} : {{ topic.thread.name }} : {{ topic.name }}{% endblock %}
+{% block description %}{{ forum.description }}{% endblock %}
+{% block keywords %}{{ forum.description }}{% endblock %}
+
+{% block path %}
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+     <tr>
+      <td class="nav" valign="bottom" align="left">
+       <span class="nav" style="color: rgb(255, 102, 0);">
+        <a class="nav" href="/">{{ forum.title }}</a>
+        &raquo; 
+        <a class="nav" href="/viewThread?id={{ topic.thread.key.id }}">{{ topic.thread.name }}</a>
+        &raquo; 
+        <a class="nav" href="">{{ topic.name }}</a>
+       </span>
+      </td>
+      <td valign="middle" nowrap="nowrap" align="right">
+       <object>
+        <div class="pagination">
+         Pages:
+         {% if prev %}<a href="/view?id={{ topic.key.id }}&page={{ prev }}">&laquo;</a>{% endif %}
+         {% for i in pages %}
+          {% ifequal i page %}
+           <b>{{ i }}</b>
+          {% else %}
+           <a href="/view?id={{ topic.key.id }}&page={{ i }}">{{ i }}</a>
+          {% endifequal %}
+	 {% endfor %}
+         {% if next %}<a title="Next" href="/view?id={{ topic.key.id }}&page={{ next }}">&raquo;</a>{% endif %}
+        </div>
+       </object>
+      </td>
+     </tr>
+    </tbody>
+    </table>
+{% endblock %}
+
+{% block main%}
+
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="3" border="0">
+    <tbody>
+        <tr>
+            <th class="thLeft" width="150" nowrap="nowrap" height="26">Author</th>
+            <th class="thRight" nowrap="nowrap">Message</th>
+        </tr>
+        {% for post in posts %}
+        <tr id="{{ post.key.id }}">
+            <td class="row1" width="10%" valign="top" nowrap="nowrap" align="left">
+             <span class="name">
+              <b><a class="gensmall" style="font-size: 12px;"><a href="viewProfile?user={{ post.author }}&height=400&width=700" class="thickbox" title="{{ post.author }} profile">{{ post.author }}</a></b>
+             <span class="postdetails">
+              <!-- ranga -->
+              <br/>
+              <br/>
+             </span>
+              <img src="/avatar?user={{ post.author }}" alt=""/>
+             </span>
+
+            </td>
+            <td class="row1" width="100%" valign="top" height="100%">
+             <table width="100%" cellspacing="0" cellpadding="0" border="0" style="height: 100%;">
+             <tbody>
+             <tr>
+            <td valign="top" align="left">
+              <a href="/view?id={{ post.topic.key.id }}&page={{ page }}#{{ post.key.id }}">
+               <img width="12" height="9" border="0" alt="" src="/images/icon_minipost.gif"/>
+              </a>
+             <span class="postdetails">
+              Sent: {{ post.date|date:"d.m.Y H:i" }} <b>{{ post.topic.name }}</b>
+             </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+             <span class="gensmall">
+             <object>
+              <hr/>
+             </object>
+             </span>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" height="100%" colspan="2">
+             <span class="postbody">{{ post.body }}</span>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="spaceRow" height="1" colspan="2">
+         <img width="1" height="1" alt="" src="/images/spacer.gif"/>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    
+    {% if next %}
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+    <tbody>
+     <tr>
+      <td class="nav" valign="bottom" align="left">
+      </td>
+      <td valign="middle" nowrap="nowrap" align="right">
+       <object>
+        <div class="pagination">
+         Go to last page to add your comment:
+         {% if next %}<a title="Next" href="/view?id={{ topic.key.id }}&page={{ next }}">&raquo;</a>{% endif %}
+        </div>
+       </object>
+      </td>
+     </tr>
+    </tbody>
+    </table>
+    {% else %}
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="0" border="0">
+    <tbody>
+     <tr>
+      <th class="thHead" height="25">
+      <b>New Post:</b>
+      </th>
+     </tr>
+     <tr style="background: #ffffff;">
+      <td>
+        <!-- pasek narzêdzi -->
+       <form action="addPost" method="post">
+        <div style="text-align: center;">
+        <a href="http://en.wikipedia.org/wiki/BBCode" target="_blank" style="color: orange; font-size: 1.5em;">BB Code allowed</a><br />
+        <textarea name="body" rows="5" cols="80" name="message" class="post"></textarea>
+        </div>
+        <input type="hidden" name="id" value="{{ topic.key.id }}">
+        <input type="hidden" name="page" value="{{ page }}">
+        <div style="text-align: center;"><input type="submit" value="Add post"></div>
+       </form>
+      </td>
+     </tr>
+    </tbody>
+    </table>
+    {% endif %}
+    
+{% endblock%}

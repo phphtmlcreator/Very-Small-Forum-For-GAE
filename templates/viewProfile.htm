@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>View Profile: {{ name}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ description }}" />
+    <link rel="stylesheet" href="/style/subSilver.css" type="text/css" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+</head>
+  <body>    
+    <table width="100%" cellspacing="2" cellpadding="2" border="0" align="center">
+    <tbody>
+     <tr>
+     <td align="left">
+     <span class="nav">
+      <a class="nav" href="/">{{ title }}</a>
+     </span>
+     </td>
+    </tr>
+    </tbody>
+    </table>
+    <table class="forumline" width="100%" cellspacing="1" cellpadding="2" border="0">
+     <tbody>
+     <tr>
+     <th class="thHead" valign="middle" height="25" colspan="2">{{ login }} profile</th>
+     </tr>
+     <tr>
+      <td class="row1" width="50%">
+       <span class="gen">Avatar: </span>
+      </td>
+      <td class="row2">
+       <span class="gen"><img src="/avatar?user={{ login }}" alt="no avatar"/></span>
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Name:</span>
+      </td>
+      <td class="row2">
+       <span class="gen">{{ name }}</span>
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Last Name:</span>
+      </td>
+      <td class="row2">
+       <span class="gen">{{ lastName }}</span>
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">From:</span>
+      </td>
+      <td class="row2">
+       <span class="gen">{{ from }}</span>
+      </td>
+     </tr>
+     <tr>
+      <td class="row1">
+       <span class="gen">Web Page:</span>
+      </td>
+      <td class="row2">
+       <span class="gen"><a href="{{ webpage }}" target="_blank">{{ webpage }}</a></span>
+      </td>
+     </tr>
+     </tbody>
+    
+    </table>
+  </body>
+</html>
